@@ -5,6 +5,7 @@
 //   node research.js status               检查 REST API 状态
 
 import { spawn } from 'child_process';
+import fs from 'fs';
 import { writeFile, listDir, clipFilename, buildClipContent, getVaultDir } from './rest-api.js';
 import { fileURLToPath } from 'url';
 import path from 'path';
@@ -43,6 +44,12 @@ if (command === 'status') {
 }
 
 if (command === 'clip' && target) {
+  if (!fs.existsSync(FETCH_PAGE)) {
+    console.log('❌ 缺少 fetch-webpage 技能');
+    console.log('   安装: git clone https://github.com/xuehai3-cyber/fetch-webpage.git ~/.claude/skills/fetch-webpage');
+    console.log('   或通过 install 脚本安装时会自动检查');
+    process.exit(1);
+  }
   console.log(`🔍 抓取: ${target}`);
   const content = await fetchPage(target);
   if (!content || !content.text) {

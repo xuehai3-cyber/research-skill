@@ -11,24 +11,28 @@
 
 ## 安装
 
+### 一行安装
+
+**Windows (PowerShell):**
+```powershell
+irm https://raw.githubusercontent.com/xuehai3-cyber/research-skill/master/install.ps1 | iex
+```
+
+**macOS / Linux:**
 ```bash
-# 1. 克隆到技能目录
+curl -fsSL https://raw.githubusercontent.com/xuehai3-cyber/research-skill/master/install.sh | bash
+```
+
+脚本会自动完成：下载 → 配置 API Key → 检查依赖。
+
+### 手动安装
+
+```bash
 git clone https://github.com/xuehai3-cyber/research-skill.git ~/.claude/skills/research
-
-# 2. 安装依赖（本技能无 npm 依赖，但需要 fetch-webpage 技能）
-#    如果没有 fetch-webpage，请一并安装：
-#    git clone https://github.com/.../fetch-webpage.git ~/.claude/skills/fetch-webpage
-
-# 3. 初始化配置
 node ~/.claude/skills/research/setup.js
 ```
 
-`setup.js` 会引导你输入：
-- REST API 地址（默认 `https://localhost:27124`）
-- API Key
-- Vault 内目标目录（默认 `Clippings`）
-
-配置文件保存在 `~/.research-config.json`。
+> **剪藏功能**需要 [fetch-webpage](https://github.com/) 技能配合，但不影响 report / studyplan / status。
 
 ## 使用
 
