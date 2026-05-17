@@ -12,6 +12,16 @@
 
 ### 一行安装
 
+```bash
+npx github:xuehai3-cyber/research-skill
+```
+
+**全自动：** 下载 → 从 Obsidian 自动读取 API Key → 验证连接。**零手动输入。**
+
+> 剪藏功能需要 [fetch-webpage](https://github.com/xuehai3-cyber/fetch-webpage) 技能（独立安装），但不影响 report / studyplan 使用。
+
+### 手动安装
+
 **Windows (PowerShell):**
 ```powershell
 irm https://raw.githubusercontent.com/xuehai3-cyber/research-skill/master/install.ps1 | iex
@@ -21,10 +31,6 @@ irm https://raw.githubusercontent.com/xuehai3-cyber/research-skill/master/instal
 ```bash
 curl -fsSL https://raw.githubusercontent.com/xuehai3-cyber/research-skill/master/install.sh | bash
 ```
-
-安装脚本自动完成：下载 → 从 Obsidian 读取配置 → 验证连接。**全程无需手动输入。**
-
-> 剪藏功能需要 [fetch-webpage](https://github.com/) 技能，但不影响 report / studyplan。
 
 ## 使用
 
@@ -45,10 +51,27 @@ Claude 会自动：
 - "帮我整理技术分类下的文章" — 只出报告
 - "给这些资料做个学习计划" — 只做计划
 
+## 案例展示
+
+以"Vibe Coding 零基础入门"为例，/research 全自动生成了 15 篇文章的知识库：
+
+### INDEX.md — 知识总览
+
+自动分类、排序、标注重点，生成建议阅读路径：
+
+![INDEX 知识总览](demo/screenshot-index.png)
+
+### STUDYPLAN.md — 学习计划
+
+7 天四阶段学习路径，含动手任务、检查点和时间估算：
+
+![STUDYPLAN 学习计划](demo/screenshot-studyplan.png)
+
 ## 文件结构
 
 ```
 ~/.claude/skills/research/
+├── package.json     npx 一行安装入口
 ├── setup.js         自动配置（从 Obsidian 读 Key）
 ├── install.sh       macOS/Linux 安装脚本
 ├── install.ps1      Windows 安装脚本

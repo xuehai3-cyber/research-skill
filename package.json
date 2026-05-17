@@ -1,0 +1,22 @@
+{
+  "name": "research-skill",
+  "version": "1.0.0",
+  "description": "一键安装 /research 技能到 Claude Code — 网页采集、精排、学习计划",
+  "type": "module",
+  "bin": {
+    "research-skill": "./setup.js"
+  },
+  "files": [
+    "setup.js",
+    "research.js",
+    "rest-api.js",
+    "SKILL.md",
+    "config.json.example"
+  ],
+  "keywords": ["claude-code", "skill", "research", "obsidian", "web-clipper"],
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "repository": "github:xuehai3-cyber/research-skill"
+}

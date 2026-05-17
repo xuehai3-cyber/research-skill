@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>/research — Vibe Coding 知识采集成果</title>
+<style>
+  :root {
+    --bg: #0d1117; --card: #161b22; --border: #30363d;
+    --text: #c9d1d9; --muted: #8b949e; --accent: #58a6ff;
+    --green: #3fb950; --orange: #d2991d; --purple: #a371f7;
+    --red: #f85149;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans SC', sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.7;
+    max-width: 900px; margin: 0 auto; padding: 40px 24px;
+  }
+  header {
+    text-align: center; padding: 60px 0 40px; border-bottom: 1px solid var(--border); margin-bottom: 40px;
+  }
+  header .icon { font-size: 48px; margin-bottom: 16px; }
+  header h1 { font-size: 28px; font-weight: 700; margin-bottom: 8px; }
+  header .subtitle { color: var(--muted); font-size: 16px; }
+  header .meta { margin-top: 16px; display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  header .meta span {
+    background: var(--card); border: 1px solid var(--border); border-radius: 20px;
+    padding: 4px 14px; font-size: 13px; color: var(--muted);
+  }
+  .section-title {
+    font-size: 20px; font-weight: 600; margin: 48px 0 20px;
+    padding-bottom: 8px; border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .section-title .emoji { font-size: 24px; }
+  .overview {
+    background: linear-gradient(135deg, #1a1f2e 0%, #161b22 100%);
+    border: 1px solid var(--border); border-radius: 12px; padding: 24px;
+    margin-bottom: 24px;
+  }
+  .overview p { color: var(--muted); font-size: 15px; }
+  .articles { display: grid; gap: 12px; }
+  .article-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+    padding: 16px 20px; transition: border-color 0.2s;
+    display: flex; gap: 14px; align-items: flex-start;
+  }
+  .article-card .num {
+    color: var(--accent); font-weight: 700; font-size: 14px; min-width: 24px;
+  }
+  .article-card .info { flex: 1; }
+  .article-card .title { font-weight: 600; font-size: 15px; margin-bottom: 2px; }
+  .article-card .desc { color: var(--muted); font-size: 13px; }
+  .badge {
+    display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 11px;
+    font-weight: 600; margin-right: 4px;
+  }
+  .badge-star { background: #1a3a1a; color: var(--green); }
+  .badge-rec { background: #3a2a0a; color: var(--orange); }
+  .reading-path {
+    background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+    padding: 20px 24px; margin-bottom: 16px;
+  }
+  .reading-path h4 { font-size: 15px; margin-bottom: 10px; color: var(--accent); }
+  .reading-path ol { padding-left: 20px; color: var(--muted); font-size: 14px; }
+  .reading-path ol li { margin-bottom: 4px; }
+  /* Study Plan */
+  .phase {
+    background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+    padding: 20px 24px; margin-bottom: 16px;
+  }
+  .phase h4 { font-size: 16px; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+  .phase .goal { color: var(--muted); font-size: 13px; margin-bottom: 12px; }
+  .phase ul { padding-left: 20px; font-size: 14px; }
+  .phase ul li { margin-bottom: 4px; }
+  .checklist { margin-top: 10px; }
+  .checklist li { color: var(--muted); }
+  .checklist li::marker { content: "☐ "; }
+  table {
+    width: 100%; border-collapse: collapse; margin: 16px 0;
+    font-size: 14px;
+  }
+  th { background: var(--card); text-align: left; padding: 10px 14px; border-bottom: 2px solid var(--border); }
+  td { padding: 10px 14px; border-bottom: 1px solid var(--border); }
+  .mindset {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 12px;
+  }
+  .mindset-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+    padding: 16px; text-align: center;
+  }
+  .mindset-card .num { font-size: 24px; font-weight: 800; color: var(--accent); }
+  .mindset-card .txt { font-size: 14px; margin-top: 6px; }
+  footer {
+    text-align: center; padding: 40px 0 20px; color: var(--muted); font-size: 13px;
+    border-top: 1px solid var(--border); margin-top: 40px;
+  }
+  footer strong { color: var(--accent); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="icon">🧠</div>
+  <h1>Vibe Coding 零基础入门 — 知识总览</h1>
+  <div class="subtitle">/research 技能自动生成的知识索引和使用指南</div>
+  <div class="meta">
+    <span>📅 2026-05-17</span>
+    <span>📂 技术</span>
+    <span>📄 15 篇文章</span>
+    <span>⚡ 全自动采集</span>
+  </div>
+</header>
+
+<!-- ============ INDEX ============ -->
+<h2 class="section-title"><span class="emoji">📚</span> INDEX.md — 知识总览</h2>
+
+<div class="overview">
+  <p>Vibe Coding（氛围编程）由 Andrej Karpathy 于 2025 年提出，核心理念是"<strong>用自然语言描述需求，AI 生成代码</strong>"。它将编程门槛从"会写代码"降至"会说话"，让非技术人员也能通过描述想法来创建应用、网站和工具。本资料库收集了 15 篇文章，涵盖概念定义、零基础教程、工具选择、实践案例和学习路径。</p>
+</div>
+
+<div class="articles">
+
+  <h3 style="font-size:15px;color:var(--muted);margin:20px 0 12px;">一、概念与定义</h3>
+  <div class="article-card">
+    <span class="num">1</span>
+    <div class="info">
+      <div class="title"><span class="badge badge-star">⭐ 入门</span> Vibe Coding 百度百科</div>
+      <div class="desc">什么是 Vibe Coding、适合哪些人、行业格局。5 分钟建立全局认知。</div>
+    </div>
+  </div>
+  <div class="article-card">
+    <span class="num">2</span>
+    <div class="info">
+      <div class="title">Microsoft Learn: Introduction to Vibe Coding</div>
+      <div class="desc">微软官方的 Vibe Coding 入门模块，简洁权威。</div>
+    </div>
+  </div>
+
+  <h3 style="font-size:15px;color:var(--muted);margin:20px 0 12px;">二、零基础实操教程</h3>
+  <div class="article-card">
+    <span class="num">3</span>
+    <div class="info">
+      <div class="title"><span class="badge badge-star">⭐ 强烈推荐</span> 写给设计师的 Vibe Coding 零基础指南</div>
+      <div class="desc">从网页三件套讲起，到前后端分工、工具选择、PRD 模板。设计师视角，零基础最友好。</div>
+    </div>
+  </div>
+  <div class="article-card">
+    <span class="num">4</span>
+    <div class="info"><div class="title">文科生也能玩转AI编程？零基础实战指南</div><div class="desc">安全配置、需求拆解、AI 协作步骤。强调环境变量管理和代码验证。</div></div>
+  </div>
+  <div class="article-card">
+    <span class="num">5</span>
+    <div class="info"><div class="title">零基础如何入门 Vibe Coding</div><div class="desc">阿里云开发者社区。商科/非技术岗视角，通俗解读。</div></div>
+  </div>
+
+  <h3 style="font-size:15px;color:var(--muted);margin:20px 0 12px;">三、开源系统课程</h3>
+  <div class="article-card">
+    <span class="num">9</span>
+    <div class="info">
+      <div class="title"><span class="badge badge-star">⭐ 强烈推荐</span> Vibe Vibe — 首个系统化开源教程</div>
+      <div class="desc">Datawhale 开源。四篇结构：基础→进阶→实践→文章。在线：www.vibevibe.cn</div>
+    </div>
+  </div>
+  <div class="article-card">
+    <span class="num">12</span>
+    <div class="info">
+      <div class="title"><span class="badge badge-rec">★ 推荐</span> 7 天从想法到上线 — Vibe Coding 指南</div>
+      <div class="desc">Day1 方法论 → Day2 选工具 → Day3 前端 → Day4 后端 → Day5 Git → Day6 实战 → Day7 部署。</div>
+    </div>
+  </div>
+
+  <h3 style="font-size:15px;color:var(--muted);margin:20px 0 12px;">四、工具专项</h3>
+  <div class="article-card">
+    <span class="num">14</span>
+    <div class="info"><div class="title">Vibe Cheatsheet — Claude Code 专属指南</div><div class="desc">提示词技巧、多会话项目管理、部署建议。</div></div>
+  </div>
+  <div class="article-card">
+    <span class="num">15</span>
+    <div class="info"><div class="title">The Non-Coder's Guide to Vibe Coding (Coursera)</div><div class="desc">Coursera 官方课程，6 模块约 6 小时。使用 Lovable、v0、Gamma 等工具。</div></div>
+  </div>
+</div>
+
+<h3 style="font-size:15px;margin:32px 0 12px;">🎯 建议阅读顺序</h3>
+<div class="reading-path">
+  <h4>第一阶段：建立认知（30 分钟）</h4>
+  <ol><li>Vibe Coding 百度百科 — 5 分钟了解全貌</li><li>写给设计师的零基础指南 前言+第一章 — 理解网页结构</li></ol>
+</div>
+<div class="reading-path">
+  <h4>第二阶段：动手准备（1 小时）</h4>
+  <ol><li>7 天从想法到上线 — 了解完整学习路径</li><li>Vibe Vibe 开源教程 — 系统化入门</li><li>选一个工具安装（TRAE/Kimi，免费+中文）</li></ol>
+</div>
+<div class="reading-path">
+  <h4>第三阶段：深入实践（持续）</h4>
+  <ol><li>写给设计师的零基础指南 · 完整版 — 学会写 PRD</li><li>Vibe Cheatsheet — 提示词技巧</li><li>Coursera 课程 — 6 小时做出第一个应用</li></ol>
+</div>
+
+<!-- ============ STUDYPLAN ============ -->
+<h2 class="section-title" style="margin-top:56px;"><span class="emoji">🎯</span> STUDYPLAN.md — 学习计划</h2>
+
+<div class="overview">
+  <p><strong>学习目标：</strong>学完本计划后，你将能够用自然语言描述需求让 AI 生成网页和小工具、独立完成个人作品集网站、理解前后端分工、写出合格的 PRD、把项目部署上线。</p>
+</div>
+
+<div class="phase">
+  <h4>📖 阶段一：认知建立 <span style="color:var(--muted);font-weight:400;font-size:13px;">第 1-2 天，约 2 小时</span></h4>
+  <div class="goal">搞清楚"Vibe Coding 到底是什么"、"我能用它做什么"</div>
+  <ul>
+    <li>读：Vibe Coding 百度百科 + 写给设计师的零基础指南前言</li>
+    <li>读：7 天从想法到上线 Day1 — 了解完整学习路径</li>
+    <li>动手：用自然语言让 AI 生成一个个人介绍页面，保存为 HTML 双击打开</li>
+  </ul>
+  <ul class="checklist">
+    <li>能用自己的话解释 Vibe Coding 是什么</li>
+    <li>能说出前端、后端、数据库分别管什么</li>
+    <li>成功在浏览器里看到一个 AI 生成的页面</li>
+  </ul>
+</div>
+
+<div class="phase">
+  <h4>🛠️ 阶段二：工具与流程 <span style="color:var(--muted);font-weight:400;font-size:13px;">第 3-4 天，约 3 小时</span></h4>
+  <div class="goal">选一个工具安装好，学会写 PRD，跑通第一个完整流程</div>
+  <ul>
+    <li>选工具安装（推荐 TRAE 国内版，免费+中文好）</li>
+    <li>用 PRD 模板写一份项目说明书</li>
+    <li>把 PRD 交给 AI，做至少 3 轮迭代修改</li>
+  </ul>
+</div>
+
+<div class="phase">
+  <h4>🚀 阶段三：第一个项目 <span style="color:var(--muted);font-weight:400;font-size:13px;">第 5-7 天，约 5 小时</span></h4>
+  <div class="goal">从零到一完成一个完整项目并部署上线</div>
+  <ul>
+    <li>跟做 Vibe Vibe 开源教程 · 实践篇</li>
+    <li>完成个人作品集网站 → GitHub 上传 → Cloudflare/Vercel 部署 → 获得网址</li>
+    <li>把网址发给朋友，收集反馈</li>
+  </ul>
+</div>
+
+<div class="phase">
+  <h4>🔮 阶段四：进阶扩展 <span style="color:var(--muted);font-weight:400;font-size:13px;">第 2-4 周，持续</span></h4>
+  <div class="goal">加入后端逻辑，让产品有"记忆"和"交互"</div>
+  <ul>
+    <li>给项目加后端功能（联系表单、留言板、AI 对话）</li>
+    <li>学习使用环境变量保护 API Key</li>
+    <li>尝试不同工具（TRAE → Cursor），做第 2 个项目</li>
+  </ul>
+</div>
+
+<h3 style="font-size:15px;margin:32px 0 12px;">💡 核心心法</h3>
+<div class="mindset">
+  <div class="mindset-card"><div class="num">01</div><div class="txt">先跑起来，再理解<br><small style="color:var(--muted)">真实项目比 10 个练习管用</small></div></div>
+  <div class="mindset-card"><div class="num">02</div><div class="txt">你是甲方，AI 是执行者<br><small style="color:var(--muted)">不满意就说，不要迁就</small></div></div>
+  <div class="mindset-card"><div class="num">03</div><div class="txt">PRD 是最重要的第一步<br><small style="color:var(--muted)">花 10 分钟写清楚需求</small></div></div>
+  <div class="mindset-card"><div class="num">04</div><div class="txt">从小处开始<br><small style="color:var(--muted)">一页、一个功能、解决问题</small></div></div>
+  <div class="mindset-card"><div class="num">05</div><div class="txt">错误信息是好朋友<br><small style="color:var(--muted)">复制报错给 AI，它自己修</small></div></div>
+</div>
+
+<!-- Time table -->
+<h3 style="font-size:15px;margin:32px 0 12px;">⏱️ 时间投入估算</h3>
+<table>
+  <tr><th>阶段</th><th>天数</th><th>总时长</th><th>阅读</th><th>动手</th></tr>
+  <tr><td>认知建立</td><td>1-2 天</td><td>2h</td><td>1h</td><td>1h</td></tr>
+  <tr><td>工具与流程</td><td>2 天</td><td>3h</td><td>1h</td><td>2h</td></tr>
+  <tr><td>第一个项目</td><td>3 天</td><td>5h</td><td>1h</td><td>4h</td></tr>
+  <tr><td>进阶扩展</td><td>2-3 周</td><td>持续</td><td>随需</td><td>为主</td></tr>
+  <tr style="font-weight:600;background:var(--card);"><td>合计</td><td>约 4 周</td><td>10h+</td><td>3h</td><td>7h+</td></tr>
+</table>
+
+<footer>
+  <p>由 <strong>/research</strong> 技能全自动生成 · Claude Code + Obsidian REST API</p>
+  <p style="margin-top:6px;">三步工作流：clip（采集）→ report（精排 INDEX）→ studyplan（学习计划）</p>
+</footer>
+
+</body>
+</html>

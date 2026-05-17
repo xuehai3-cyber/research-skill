@@ -1,13 +1,41 @@
 #!/usr/bin/env node
-// setup.js — /research 技能自动配置
-// 自动从 Obsidian 提取 REST API 配置，无需手动输入
+// setup.js — /research 技能一键安装 + 自动配置
+// npx github:xuehai3-cyber/research-skill → 复制文件 + 自动提取 Obsidian API Key
+// node setup.js (在技能目录中) → 仅重新配置
 
 import fs from 'fs';
 import path from 'path';
 import os from 'os';
-import readline from 'readline';
+import { fileURLToPath } from 'url';
 
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const SKILL_DIR = path.join(os.homedir(), '.claude', 'skills', 'research');
 const CONFIG_PATH = path.join(os.homedir(), '.research-config.json');
+
+// npx 模式：脚本不在技能目录 → 先复制文件，再配置
+if (__dirname !== SKILL_DIR) {
+  console.log('╔══════════════════════════════════════════╗');
+  console.log('║   /research 技能 — npx 一键安装          ║');
+  console.log('╚══════════════════════════════════════════╝');
+  console.log('');
+  console.log(`📦 安装到: ${SKILL_DIR}`);
+
+  fs.mkdirSync(SKILL_DIR, { recursive: true });
+  const files = ['research.js', 'rest-api.js', 'SKILL.md', 'config.json.example'];
+  for (const f of files) {
+    const src = path.join(__dirname, f);
+    if (fs.existsSync(src)) {
+      fs.copyFileSync(src, path.join(SKILL_DIR, f));
+    }
+  }
+  console.log('✅ 文件已复制');
+  console.log('');
+
+  // 切换到技能目录继续配置
+  process.chdir(SKILL_DIR);
+  console.log('🔧 自动配置...');
+  console.log('');
+}
 
 function findObsidianConfig() {
   const platform = process.platform;
