@@ -1,0 +1,5 @@
+{
+  "apiBase": "https://localhost:27124",
+  "apiKey": "填写你的 API Key",
+  "vaultDir": "Clippings"
+}
