@@ -4,7 +4,7 @@
 
 ## 前置条件
 
-- **Obsidian** 已安装运行
+- **Obsidian** 已安装运行，安装地址：https://obsidian.md/
 - **[obsidian-local-rest-api](https://github.com/coddingtonbear/obsidian-local-rest-api)** 插件已启用并生成 API Key
 - **Node.js** >= 18
 
