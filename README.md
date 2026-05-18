@@ -82,6 +82,10 @@ Claude 会自动：
 └── README.md        本文件
 ```
 
+## 建造日志
+
+想知道这个项目是怎么从零建起来的？[BUILDLOG.md](BUILDLOG.md) — 一个不会编程的人，用 AI 打造 research-skill 的完整过程。
+
 ## 许可
 
 MIT
