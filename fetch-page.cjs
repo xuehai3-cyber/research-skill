@@ -123,6 +123,7 @@ async function startChrome() {
     '--no-default-browser-check',
     '--headless=new',
     '--disable-gpu',
+    '--no-sandbox',
   ];
   spawn(CHROME_EXE, args, { detached: true, stdio: 'ignore' }).unref();
 
