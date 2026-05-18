@@ -10,9 +10,16 @@
     "setup.js",
     "research.js",
     "rest-api.js",
+    "fetch-page.cjs",
     "SKILL.md",
     "config.json.example"
   ],
+  "dependencies": {
+    "@mozilla/readability": "^0.6.0",
+    "jsdom": "^29.1.1",
+    "puppeteer-core": "^25.0.4",
+    "turndown": "^7.2.4"
+  },
   "keywords": ["claude-code", "skill", "research", "obsidian", "web-clipper"],
   "license": "MIT",
   "engines": {

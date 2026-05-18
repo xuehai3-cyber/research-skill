@@ -6,7 +6,6 @@ echo "╚═══════════════════════�
 echo ""
 
 SKILL_DIR="$HOME/.claude/skills/research"
-FETCH_DIR="$HOME/.claude/skills/fetch-webpage"
 
 # 1. Clone research skill
 if [ -d "$SKILL_DIR" ]; then
@@ -18,18 +17,10 @@ else
   git clone https://github.com/xuehai3-cyber/research-skill.git "$SKILL_DIR"
 fi
 
-# 2. Check fetch-webpage dependency
-if [ -d "$FETCH_DIR" ]; then
-  echo "✅ fetch-webpage 已安装"
-else
-  echo ""
-  echo "⚠️  缺少 fetch-webpage（剪藏功能需要）"
-  echo "   如果你有 fetch-webpage 仓库，可以这样安装："
-  echo "   git clone <fetch-webpage-repo> $FETCH_DIR"
-  echo ""
-  echo "   没有也不影响 report / studyplan / status 功能"
-  echo ""
-fi
+# 2. Install npm dependencies (Readability, puppeteer, turndown)
+echo ""
+echo "📦 安装 npm 依赖..."
+cd "$SKILL_DIR" && npm install
 
 # 3. Run setup
 echo ""

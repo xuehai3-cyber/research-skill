@@ -11,7 +11,7 @@ import { fileURLToPath } from 'url';
 import path from 'path';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const FETCH_PAGE = path.join(__dirname, '..', 'fetch-webpage', 'fetch-page.js');
+const FETCH_PAGE = path.join(__dirname, 'fetch-page.cjs');
 
 const command = process.argv[2];
 const target = process.argv[3];
@@ -45,9 +45,8 @@ if (command === 'status') {
 
 if (command === 'clip' && target) {
   if (!fs.existsSync(FETCH_PAGE)) {
-    console.log('❌ 缺少 fetch-webpage 技能');
-    console.log('   安装: git clone https://github.com/xuehai3-cyber/fetch-webpage.git ~/.claude/skills/fetch-webpage');
-    console.log('   或通过 install 脚本安装时会自动检查');
+    console.log('❌ 缺少 fetch-page.js');
+    console.log('   请重新运行: node setup.js');
     process.exit(1);
   }
   console.log(`🔍 抓取: ${target}`);

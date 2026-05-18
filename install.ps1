@@ -4,7 +4,6 @@ Write-Host "╚═════════════════════�
 Write-Host ""
 
 $SKILL_DIR = "$env:USERPROFILE\.claude\skills\research"
-$FETCH_DIR = "$env:USERPROFILE\.claude\skills\fetch-webpage"
 
 # 1. Clone research skill
 if (Test-Path $SKILL_DIR) {
@@ -17,18 +16,11 @@ if (Test-Path $SKILL_DIR) {
   git clone https://github.com/xuehai3-cyber/research-skill.git $SKILL_DIR
 }
 
-# 2. Check fetch-webpage dependency
-if (Test-Path $FETCH_DIR) {
-  Write-Host "✅ fetch-webpage 已安装"
-} else {
-  Write-Host ""
-  Write-Host "⚠️  缺少 fetch-webpage（剪藏功能需要）"
-  Write-Host "   如果你有 fetch-webpage 仓库，可以这样安装："
-  Write-Host "   git clone <fetch-webpage-repo> $FETCH_DIR"
-  Write-Host ""
-  Write-Host "   没有也不影响 report / studyplan / status 功能"
-  Write-Host ""
-}
+# 2. Install npm dependencies (Readability, puppeteer, turndown)
+Write-Host ""
+Write-Host "📦 安装 npm 依赖..."
+Set-Location $SKILL_DIR
+npm install
 
 # 3. Run setup
 Write-Host ""
