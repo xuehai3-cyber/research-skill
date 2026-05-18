@@ -18,7 +18,7 @@ npx github:xuehai3-cyber/research-skill
 
 **全自动：** 下载 → 从 Obsidian 自动读取 API Key → 验证连接。**零手动输入。**
 
-> 剪藏功能需要 [fetch-webpage](https://github.com/xuehai3-cyber/fetch-webpage) 技能（独立安装），但不影响 report / studyplan 使用。
+> 剪藏功能依赖 @mozilla/readability + puppeteer-core，安装脚本会自动完成 npm install。
 
 ### 手动安装
 
@@ -76,6 +76,7 @@ Claude 会自动：
 ├── install.sh       macOS/Linux 安装脚本
 ├── install.ps1      Windows 安装脚本
 ├── research.js      CLI 入口
+├── fetch-page.cjs   网页抓取引擎（Readability + Puppeteer）
 ├── rest-api.js      REST API 封装
 ├── SKILL.md         Claude 技能说明
 └── README.md        本文件
